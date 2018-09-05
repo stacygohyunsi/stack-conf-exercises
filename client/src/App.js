@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.signIn = this.signIn.bind(this);
-    this.showAnswer = this.showAnswer.bind(this);
+    this.answer = this.answer.bind(this);
     this.state = {
-      payload: null, 
+      jwtContents: null, 
       jwt: null
     }
   }
@@ -23,8 +22,11 @@ class App extends Component {
 			}
 		})
 		.then(res => res.json())
-		.then(jwt => {
+		.then(result => {
+      let jwtContents = JSON.stringify(result.headerPayloadSig, null, 2);
+      let jwt = result.jwt;
       this.setState({
+        jwtContents, 
         jwt
       });
 		}).catch((err) => {
@@ -32,8 +34,8 @@ class App extends Component {
 		});
   }
 
-  showAnswer() {
-		fetch(`/showAnswer`, {
+  answer() {
+		fetch(`https://yhserver/answer`, {
       method: 'GET', 
       credentials: 'include',
 			headers: {
@@ -51,17 +53,23 @@ class App extends Component {
 
   render() {
     let toggle;
-    if (this.state.jwt) {
+    if (this.state.jwtContents) {
       toggle = (
         <div>
-          <div>Why did the computer show up at work late?</div>
-          <button onClick={this.showAnswer}>Find out the answer</button>
+          <div className='jwtContents'>
+            The contents of the JWT token is: 
+            <pre>{this.state.jwtContents}</pre>  
+          </div>  
+          <div className='jwt'>
+            Your JWT token is: {this.state.jwt}
+          </div>      
+          <button className='button' onClick={this.answer}>Submit JWT and find out the answer</button>
           <div>{this.state.payload}</div>
         </div>
       )
     } else {
       toggle = (
-        <button onClick={this.signIn}>Sign In</button>
+        <button className='button' onClick={this.signIn}>Sign In</button>
       )
     }
     return (

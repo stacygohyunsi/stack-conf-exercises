@@ -5,9 +5,10 @@ The code is written in ReactJS, NodeJS and Express.
 1. `git clone` this library
 2. Run `npm install`
 3. Run `node index.js` to start the backend server
+4. The backend server will be running on `http://localhost:9000/`
 4. Open a new terminal and `cd client`. 
 5. Then run `npm start` to run the front-end application
-6. Access the front-end application on `http://localhost:3000/` and backend server will be running on `http://localhost:9000/`
+6. Access the front-end application on `http://localhost:3000/` 
 
 # Exercise
 Sign your own jwt using this library (https://github.com/auth0/node-jsonwebtoken) and use it to make a call to the verifying server. 
