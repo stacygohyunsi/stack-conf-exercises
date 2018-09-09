@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Stacy Goh <stacy.gohys@gmail.com> (http://imstacy.com)",
   "license": "ISC",
   "dependencies": {
     "cookie-parser": "^1.4.3",

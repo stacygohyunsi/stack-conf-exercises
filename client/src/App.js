@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import NetworkManager from './NetworkManager';
 
 class App extends Component {
   constructor(props) {
@@ -13,35 +14,21 @@ class App extends Component {
   }
 
   signIn() {
-		fetch(`/signin`, {
-      method: 'POST', 
-      credentials: 'include',
-			headers: {
-				'Accept': 'application/json',
-				'Content-Type': 'application/json',
-			}
-		})
-		.then(res => res.json())
-		.then(result => {
+    NetworkManager.signIn()
+    .then((result) => {
       let jwtContents = JSON.stringify(result.headerPayloadSig, null, 2);
       let jwt = result.jwt;
       this.setState({
         jwtContents, 
         jwt
       });
-		}).catch((err) => {
-			console.log(err);
-		});
+    });
   }
 
   answer() {
-		fetch(`https://yhserver/answer`, {
-      method: 'GET', 
-      credentials: 'include',
-			headers: {
-				'Accept': 'application/json',
-				'Content-Type': 'application/json',
-			}
+		fetch(`http://localhost:3000/api/answers`, {
+      method: 'POST', 
+      credentials: 'include'
 		})
 		.then(res => res.json())
 		.then(payload => {
