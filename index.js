@@ -11,4 +11,4 @@ app.use(cookieParser());
 
 app.use('/api', loginRouter);
 
-app.listen(app.listen(serverConfig.port, () => console.log(`Authorisation Server is listening on port ${serverConfig.port}!`)));
+app.listen(serverConfig.port, () => console.log(`Authorisation Server is listening on port ${serverConfig.port}!`));
