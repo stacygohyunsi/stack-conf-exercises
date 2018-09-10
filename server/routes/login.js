@@ -13,7 +13,7 @@ loginRouter.post('/signin', (req, res) => {
 				iss: 'stackconf-auth-service',
 				aud: 'stackconf-api-service', 
 				sub: 'Stacy', // Fill in your name here, 
-				ans: 'I know!!'
+				ans: 'hello there'
 		},
 		digitalSigningSecret: secrets.jwtSecret,
 		options: {
@@ -28,7 +28,6 @@ loginRouter.post('/signin', (req, res) => {
 	// 	res.status(500).json('Not found');
 	// }
 	jwt.sign(accessToken.payload, accessToken.digitalSigningSecret, accessToken.options, (err, resultAccessToken) => {
-		res.cookie('jwt', resultAccessToken, {domain:'localhost'});
 		let headerPayloadSig = jwt.decode(resultAccessToken, {complete: true});
 		res.json({jwt: resultAccessToken, headerPayloadSig: headerPayloadSig});
 	});

@@ -17,7 +17,8 @@ class App extends Component {
     NetworkManager.signIn()
     .then((result) => {
       let jwtContents = JSON.stringify(result.headerPayloadSig, null, 2);
-      let jwt = result.jwt;
+			let jwt = result.jwt;
+			sessionStorage.setItem('jwt', jwt);
       this.setState({
         jwtContents, 
         jwt
@@ -26,16 +27,12 @@ class App extends Component {
   }
 
   answer() {
-		fetch(`http://localhost:3000/api/answers`, {
-      method: 'POST', 
-      credentials: 'include'
-		})
-		.then(res => res.json())
-		.then(payload => {
-      this.setState({payload});
-		}).catch((err) => {
-			console.log(err);
-		});
+		let jwt = sessionStorage.getItem('jwt', jwt);
+    NetworkManager.postAnswer(jwt)
+    .then((result) => {
+			console.log(result);
+			
+    });
   }
 
   render() {
