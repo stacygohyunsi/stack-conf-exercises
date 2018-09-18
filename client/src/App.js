@@ -9,7 +9,8 @@ class App extends Component {
     this.answer = this.answer.bind(this);
     this.state = {
       jwtContents: null, 
-      jwt: null
+      jwt: null, 
+      err: null
     }
   }
 
@@ -23,7 +24,13 @@ class App extends Component {
         jwtContents, 
         jwt
       });
-    });
+    })
+    .catch((err) => {
+      console.log(err);
+      this.setState({
+        err
+      });
+    })
   }
 
   answer() {
@@ -53,7 +60,10 @@ class App extends Component {
       )
     } else {
       toggle = (
-        <button className='button' onClick={this.signIn}>Sign In</button>
+        <div>
+          <button className='startButton' onClick={this.signIn}>Sign In</button>
+          <div className='errorMessage'>{this.state.err}</div>
+        </div>
       )
     }
     return (

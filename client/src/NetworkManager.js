@@ -11,6 +11,9 @@ class NetworkManager {
 			})
 			.then(res => res.json())
 			.then(result => {
+				if (result.err) {
+					reject(result.err);
+				}
 				resolve(result);
 			}).catch((err) => {
 				console.log(err);
@@ -21,7 +24,7 @@ class NetworkManager {
 
   static postAnswer(jwt) {
 		return new Promise((resolve, reject) => {
-			fetch(`https://stack-conf.herokuapp.com/api/answers`, {
+			fetch(`https://stack-conf-jwt.herokuapp.com//api/answers`, {
 				method: 'POST', 
 				headers: {
 					Authorization: 'Bearer ' + jwt
