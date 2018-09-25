@@ -16,14 +16,18 @@ app.get('/verifytoken', (req, res) => {
 		let accessToken = req.headers.authorization.split(' ')[1];
 		jwt.verify(accessToken, 'stackconf', function(err, decoded) {
 				if (err) {
-						res.send('Oops, you are NOT authorised to view this page.');
+					res.send(`Oops, you are NOT authorised to view this page because: ${err.message}`);
 				} else {
-						res.send('Congrats, you are authorised to view this page.');
+					res.send('Congrats, you are authorised to view this page.');
 				}
 		});
 	} else {
 		res.send('No authorisation header found.');
 	}
+});
+
+app.get('/', (req, res) => {
+	res.send('Running!')
 });
 
 app.use('/api', loginRouter);

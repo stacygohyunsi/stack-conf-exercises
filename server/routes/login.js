@@ -13,7 +13,7 @@ loginRouter.post('/signin', (req, res) => {
 				iss: 'stackconf-auth-service',
 				aud: 'stackconf-api-service', 
 				sub: 'your name', // Fill in your name here, 
-				ans: 'inheritance'
+				ans: 'answer' // Answer
 		},
 		digitalSigningSecret: secrets.jwtSecret,
 		options: {
