@@ -38,7 +38,11 @@ class App extends Component {
     NetworkManager.postAnswer(jwt)
     .then((result) => {
 			console.log(result);
-			
+			if (result && result.status === 'correct') {
+        alert('Congrats, you got it right! Help us keep the answer as a secret ya? (;');
+      } else {
+        alert('Oops, the answer is wrong. Make another guess!');
+      }
     });
   }
 
