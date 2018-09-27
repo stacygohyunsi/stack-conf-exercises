@@ -1,8 +1,8 @@
 
 class NetworkManager {
-  static signIn() {
+  static createTicket() {
     return new Promise((resolve, reject) => {
-			fetch(`/api/signin`, {
+			fetch(`/api/createticket`, {
 				method: 'POST', 
 				headers: {
 					'Accept': 'application/json',

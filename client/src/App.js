@@ -5,7 +5,7 @@ import NetworkManager from './NetworkManager';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.signIn = this.signIn.bind(this);
+    this.createTicket = this.createTicket.bind(this);
     this.answer = this.answer.bind(this);
     this.state = {
       jwtContents: null, 
@@ -14,8 +14,8 @@ class App extends Component {
     }
   }
 
-  signIn() {
-    NetworkManager.signIn()
+  createTicket() {
+    NetworkManager.createTicket()
     .then((result) => {
       let jwtContents = JSON.stringify(result.headerPayloadSig, null, 2);
 			let jwt = result.jwt;
@@ -65,7 +65,7 @@ class App extends Component {
     } else {
       toggle = (
         <div>
-          <button className='startButton' onClick={this.signIn}>Sign In</button>
+          <button className='startButton' onClick={this.createTicket}>Create Ticket</button>
           <div className='errorMessage'>{this.state.err}</div>
         </div>
       )

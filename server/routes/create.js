@@ -3,23 +3,17 @@ const { secrets } = require('../config');
 const uuidv1 = require('uuid/v1');
 var jwt = require('jsonwebtoken');
 
-const loginRouter = express.Router();
+const createRouter = express.Router();
 
 //Exercise 2
 //FILL THIS PART IN
-loginRouter.post('/signin', (req, res) => {
+createRouter.post('/createticket', (req, res) => {
 	const accessToken = {
 		payload: {
-				iss: 'stackconf-auth-service',
-				aud: 'stackconf-api-service', 
-				sub: 'your name', // Fill in your name here, 
-				ans: 'answer' // Answer
 		},
 		digitalSigningSecret: secrets.jwtSecret,
 		options: {
-				jwtid: uuidv1(),
-				algorithm: 'HS256',
-				expiresIn: 60 * 60
+				jwtid: uuidv1()
 		}
 	};
 
@@ -36,4 +30,4 @@ loginRouter.post('/signin', (req, res) => {
 	}
 });
 
-module.exports = loginRouter;
+module.exports = createRouter;

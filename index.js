@@ -2,7 +2,7 @@ const express = require('express');
 var cors = require('cors');
 const { serverConfig } = require('./server/config');
 const cookieParser = require('cookie-parser');
-const loginRouter = require('./server/routes/login');
+const createRouter = require('./server/routes/create');
 var jwt = require('jsonwebtoken');
 
 let app = express();
@@ -30,6 +30,6 @@ app.get('/', (req, res) => {
 	res.send('Running!')
 });
 
-app.use('/api', loginRouter);
+app.use('/api', createRouter);
 
 app.listen(serverConfig.port, () => console.log(`Authorisation Server is listening on port ${serverConfig.port}!`));
