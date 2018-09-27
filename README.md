@@ -17,11 +17,13 @@ Make a GET call to the `/verifytoken` endpoint.
 You should get the error: `No authorisation header found.`
 
 2. The server is expecting an authorisation header with a JWT. Get the jwt from `bit.ly/jwt-ex-1`
+
 3. Copy the JWT and add a Authorisation header: Bearer {JWT} to your request
 
 You should get the error: `Oops, you are NOT authorised to view this page because: invalid signature`
 
 4. Seems like the secret is wrong. Paste the correct secret into jwt.io to regenerate a new JWT
+
 5. Use the correct JWT to make the request again
 
 You should get the error: `Oops, you are NOT authorised to view this page because: jwt expired`
