@@ -69,15 +69,16 @@
 }
 
 .jwtContents {
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-flow:column nowrap;
-  background:#458bc3;
-  color:#fff;
-  height:300px;
-  overflow:hidden;
-  padding:20px;
+  background-image: url('./token.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+  height: 35rem;
+  overflow: hidden;
 }
 
 .jwt {
@@ -85,8 +86,7 @@
   justify-content:center;
   align-items:center;
   flex-flow:column nowrap;
-  background:#1abc9c;
-  color:#fff;
+  color: gray;
   height:200px;
   overflow:hidden;
   padding:20px;

@@ -51,12 +51,12 @@ class App extends Component {
     if (this.state.jwtContents) {
       toggle = (
         <div>
+          <div className='jwt'>
+            Your JWT token is: {this.state.jwt}
+          </div>  
           <div className='jwtContents'>
             The contents of the JWT token is: 
             <pre>{this.state.jwtContents}</pre>  
-          </div>  
-          <div className='jwt'>
-            Your JWT token is: {this.state.jwt}
           </div>      
           <button className='button' onClick={this.answer}>Submit JWT and find out the answer</button>
           <div>{this.state.payload}</div>
