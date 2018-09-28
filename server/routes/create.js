@@ -10,10 +10,11 @@ const createRouter = express.Router();
 createRouter.post('/createticket', (req, res) => {
 	const accessToken = {
 		payload: {
+			//Fill in for Exercise 2(c)
 		},
 		digitalSigningSecret: secrets.jwtSecret,
 		options: {
-				jwtid: uuidv1()
+			//Fill in for Exercise 2(a)
 		}
 	};
 
