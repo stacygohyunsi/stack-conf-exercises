@@ -35,13 +35,13 @@ class App extends Component {
 
   answer() {
 		let jwt = sessionStorage.getItem('jwt', jwt);
-    NetworkManager.postAnswer(jwt)
+    NetworkManager.postTicket(jwt)
     .then((result) => {
 			console.log(result);
-			if (result && result.status === 'correct') {
-        alert('Congrats, you got it right! Help us keep the answer as a secret ya? (;');
+			if (result && result.message) {
+        alert('Welcome to STACK amusement park!');
       } else {
-        alert('Oops, the answer is wrong. Make another guess!');
+        alert(`Oops, there is something wrong with your ticket: ${result.error}. Try again?`);
       }
     });
   }
@@ -58,7 +58,7 @@ class App extends Component {
             The contents of the JWT token is: 
             <pre>{this.state.jwtContents}</pre>  
           </div>      
-          <button className='button' onClick={this.answer}>Submit JWT and find out the answer</button>
+          <button className='button' onClick={this.answer}>Submit your token to gain entry!</button>
           <div>{this.state.payload}</div>
         </div>
       )

@@ -13,6 +13,7 @@ app.use(cookieParser());
 //Exercise 1
 app.get('/verifytoken', (req, res) => {
 	if (req.headers.authorization) {
+		//add Bearer check too
 		let accessToken = req.headers.authorization.split(' ')[1];
 		jwt.verify(accessToken, 'stackconf', function(err, decoded) {
 				if (err) {

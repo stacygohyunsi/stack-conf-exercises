@@ -17,15 +17,14 @@ createRouter.post('/createticket', (req, res) => {
 		}
 	};
 
-	
-	if (accessToken.payload.sub === undefined || accessToken.payload.sub === '') {
-		res.status(500).json({err: 'err: sub claim in jwt not found'});
-	} else if (accessToken.payload.ans === undefined || accessToken.payload.ans === '') {
-		res.status(500).json({err: 'err: ans claim in jwt not found'});
+	if (!accessToken.options.algorithm) {
+		res.status(500).json({ err: 'options error: signature algorithm not found' });
+	} else if (!accessToken.options.expiresIn) {
+		res.status(500).json({ err: 'options error: jwt expiry not found' });
 	} else {
 		jwt.sign(accessToken.payload, accessToken.digitalSigningSecret, accessToken.options, (err, resultAccessToken) => {
-			let headerPayloadSig = jwt.decode(resultAccessToken, {complete: true});
-			res.json({jwt: resultAccessToken, headerPayloadSig: headerPayloadSig});
+		  let headerPayloadSig = jwt.decode(resultAccessToken, { complete: true });
+		  res.json({ jwt: resultAccessToken, headerPayloadSig: headerPayloadSig });
 		});
 	}
 });

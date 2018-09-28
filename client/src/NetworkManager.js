@@ -22,7 +22,7 @@ class NetworkManager {
     });
 	}
 
-  static postAnswer(jwt) {
+  static postTicket(jwt) {
 		return new Promise((resolve, reject) => {
 			fetch(`https://stack-conf-jwt.herokuapp.com/api/park/entries`, {
 				method: 'POST', 
