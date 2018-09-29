@@ -61,7 +61,31 @@ Access the client interface on `http://localhost:3000/`
 - `~/server` contains the express server and its apis
 
 ## Todo
-Help fix the broken ticketing machine for an amusement park
+Help fix the broken ticketing machine for an amusement park.
+
+1. Update the code in `routes/create.js` with JWT configuration options to be:
+
+- Algorithm - HS384
+- expiresIn - 1 hour
+
+This ensures that we are using HS284 algorithm to sign the JWT and that the JWT should expire in 1 hour.
+
+2. Start ticketing server (http://localhost:9000) and visit http://localhost:3000 to view create ticket page
+
+3. Click Create Ticket’ to generate a ticket. You should be able to see your ticket generated.
+
+4. Test out your generated ticket against the amusement park gantry system. By clicking 'Insert Ticket into Gantry', We make an API request to `stack-conf-jwt.herokuapp.com/api/park/entries`.
+
+5. We should get an error which says that certain claims are missing. 
+
+6. Fix it by configuring the correct claims in the code payload:
+
+- Issuer - 'stackconf-auth-service'
+- Audience - 'stackconf-api-service'
+- Subject - 'yourname'
+- Type: 'VIP ticket'
+
+7. Click ‘Insert Ticket into Gantry’ to send your JWT token and gain entry to the amusement park.
 
 ## Food for thought - Questions to think about:
 1. How do I use a private/public key pair instead of using HMAC? What would have to change?
