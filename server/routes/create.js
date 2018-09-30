@@ -7,7 +7,7 @@ const createRouter = express.Router();
 
 //Exercise 2
 //FILL THIS PART IN
-createRouter.post('/createticket', (req, res) => {
+function createJwt() {
 	const accessToken = {
 		payload: {
 			//Fill in for Exercise 2(c)
@@ -17,7 +17,11 @@ createRouter.post('/createticket', (req, res) => {
 			//Fill in for Exercise 2(a)
 		}
 	};
+	return accessToken;
+}
 
+createRouter.post('/createticket', (req, res) => {
+	let accessToken = createJwt();
 	if (!accessToken.options.algorithm) {
 		res.status(500).json({ err: 'options error: signature algorithm not found' });
 	} else if (!accessToken.options.expiresIn) {
