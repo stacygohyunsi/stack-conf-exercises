@@ -51,13 +51,24 @@ class App extends Component {
     if (this.state.jwtContents) {
       toggle = (
         <div>
-          <div className='jwt'>
-            Your JWT token is: {this.state.jwt}
-          </div>  
+          <div class="cardWrap">
+            <div class="card cardLeft">
+              <h1>Entry to STACK Amusement Park - <span>JWT Token</span></h1>
+              <div className='jwt'>
+                {this.state.jwt}
+              </div>
+            </div>
+            <div class="card cardRight">
+              <div class="number">
+                <h3>JOIN NOW</h3>
+              </div>
+              <div class="barcode"></div>
+            </div>
+          </div>          
           <div className='jwtContents'>
             The contents of the JWT token is: 
             <pre>{this.state.jwtContents}</pre>  
-          </div>      
+          </div> 
           <button className='button' onClick={this.answer}>Submit your token to gain entry!</button>
           <div>{this.state.payload}</div>
         </div>
