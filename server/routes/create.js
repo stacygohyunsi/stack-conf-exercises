@@ -15,8 +15,6 @@ function createJwt() {
 		digitalSigningSecret: secrets.jwtSecret,
 		options: {
 			//Fill in for Exercise 2(a)
-			algorithm: 'HS384', 
-			expiresIn: 60
 		}
 	};
 	return accessToken;
