@@ -89,7 +89,7 @@ This ensures that we are using HS384 algorithm to sign the JWT and that the JWT 
 
 Once again, you may reference the readme of our JWT library used(https://github.com/auth0/node-jsonwebtoken), to figure out how to add registered claims.
 
-*Hint: One of the above claims is a private claim and require manaully adding to token payload.*
+*Hint: One of the claims is a private claim and require manual adding to token payload.*
 
 7. Click ‘Insert Ticket into Gantry’ to send your JWT token and gain entry to the amusement park.
 
